@@ -1,12 +1,12 @@
-    import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
     
-    test.beforeEach('Login', async ({ page }) => {
-        await page.goto('https://s1.yahshuahris.com/login');
-        await page.locator('#email').fill('yahshuabba.ecptzo@gmail.com');
-        await page.locator('#password').fill('Sercurepass@223');
-        await page.locator('#login-button').click();
-        await page.waitForURL('https://s1.yahshuahris.com/dashboard');
-    });
+test.beforeEach('Login', async ({ page }) => {
+    await page.goto('https://yahshuahris.com/login');
+    await page.locator('#email').fill('yahshuauniversity.co@gmail.com');
+    await page.locator('#password').fill('K2s3xQY7.XhnHuUajrtU');
+    await page.locator('#login-button').click();
+    await page.waitForURL('**/dashboard'); // Flexible matcher
+});
     
  test('General-Employees', async ({ page }) =>{
 
