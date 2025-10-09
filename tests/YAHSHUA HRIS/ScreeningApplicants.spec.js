@@ -1,0 +1,67 @@
+import { test, expect } from '@playwright/test';
+    
+test.beforeEach('Login', async ({ page }) => {
+    await page.goto('https://yahshuahris.com/login');
+    await page.locator('#email').fill('yahshuauniversity.co@gmail.com');
+    await page.locator('#password').fill('K2s3xQY7.XhnHuUajrtU');
+    await page.locator('#login-button').click();
+    await page.waitForURL('**/dashboard'); // Flexible matcher
+});
+    
+     test('Screening Applicants', async ({ page }) =>{
+        await page.setViewportSize({ width: 1920, height: 1080 });
+         await page.getByRole('link', { name: 'Screen Applicants' }).click();
+  await page.getByRole('link', { name: 'New Applicant/s' }).click();
+  await page.getByRole('button', { name: 'Add Stage' }).click();
+  await page.getByRole('textbox').filter({ hasText: /^$/ }).press('CapsLock');
+  await page.getByRole('textbox').filter({ hasText: /^$/ }).fill('F');
+  await page.getByRole('textbox').filter({ hasText: /^$/ }).press('CapsLock');
+  await page.getByRole('textbox').filter({ hasText: /^$/ }).fill('Final interview');
+  await page.getByRole('button', { name: 'Final interview Good Fit (0)' }).getByRole('button').nth(1).click();
+  await page.getByRole('button', { name: 'Remove Stage', exact: true }).click();
+  await page.getByRole('button', { name: 'YES' }).click();
+  await page.getByRole('button', { name: 'Pre-Interview Good Fit (1)' }).getByRole('button').nth(1).click();
+  await page.getByRole('button', { name: 'Set-up Stage Requirements', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Requirements' }).fill('1');
+  await page.getByRole('button', { name: 'Save' }).click();
+  await page.getByRole('button', { name: 'Final Interview Good Fit (1)' }).getByRole('button').nth(1).click();
+  await page.getByRole('button', { name: 'Set-up Stage Requirements', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Requirements' }).fill('2');
+  await page.getByRole('button', { name: 'Save' }).click();
+  await page.locator('div').filter({ hasText: /^JRJonathan Reyes$/ }).getByTestId('elipsis-btn').click();
+  await page.getByRole('button', { name: 'View Information', exact: true }).click();
+  await page.getByRole('button', { name: 'Job Experience' }).click();
+  await page.locator('div').filter({ hasText: /^Summary$/ }).click();
+  await page.getByRole('button', { name: 'Answers' }).click();
+  await page.getByRole('button', { name: 'Close' }).click();
+  await page.locator('div').filter({ hasText: /^JRJonathan Reyes$/ }).getByTestId('elipsis-btn').click();
+  await page.getByRole('button', { name: 'Checklist', exact: true }).click();
+  await page.getByRole('checkbox', { name: 'AP background' }).check();
+  await page.getByRole('checkbox', { name: 'AR background' }).check();
+  await page.getByRole('checkbox', { name: 'Knows the basic accounting' }).check();
+  await page.getByRole('radio', { name: 'Withdrawn' }).check();
+  await page.getByRole('radio', { name: 'Rejected' }).check();
+  await page.getByRole('radio', { name: 'Passed' }).check();
+  await page.getByRole('textbox', { name: 'Add your notes for this' }).click();
+  await page.getByRole('textbox', { name: 'Add your notes for this' }).fill('good');
+  await page.getByRole('button', { name: 'Update' }).click();
+  await page.locator('div').filter({ hasText: /^JRJonathan ReyesHas stage notes$/ }).getByTestId('elipsis-btn').click();
+  await page.getByRole('button', { name: 'Send Email', exact: true }).click();
+  await page.getByLabel('Email Template').selectOption('57');
+  await page.getByRole('button', { name: 'Send' }).click();
+  await page.getByRole('button', { name: 'CONTINUE' }).click();
+  await page.locator('div').filter({ hasText: /^JRJonathan ReyesHas stage notes$/ }).getByTestId('elipsis-btn').click();
+  await page.getByRole('button', { name: 'Schedule Interview', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Start Time*' }).click();
+  await page.getByRole('textbox', { name: 'Start Time*' }).fill('10:50');
+  await page.getByLabel('Duration*').selectOption('30');
+  await page.locator('.ql-editor').click();
+  await page.locator('.ql-editor').fill('hello');
+  await page.getByRole('textbox', { name: 'Add hiring team members*' }).click();
+  await page.getByRole('textbox', { name: 'Add hiring team members*' }).fill('yahshuauniversity.co@gmail.com');
+  await page.getByRole('button', { name: 'Send Interview Request' }).click();
+  await page.locator('input[name="date"]').fill('2025-10-09');
+  await page.getByRole('button', { name: 'Send Interview Request' }).click();
+  await page.locator('div').filter({ hasText: /^Schedule Interview$/ }).locator('svg').click();
+  await page.getByRole('button', { name: 'Yes' }).click();
+});
